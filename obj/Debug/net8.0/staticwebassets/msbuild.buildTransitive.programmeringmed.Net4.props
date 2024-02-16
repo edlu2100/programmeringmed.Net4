@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/programmeringmed.Net4.props" />
+</Project>

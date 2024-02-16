@@ -1,0 +1,6 @@
+@programmeringmed.Net4_HostAddress = http://localhost:5255
+
+GET {{programmeringmed.Net4_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
