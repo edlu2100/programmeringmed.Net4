@@ -9,8 +9,8 @@ public class ApplicationDbContext : DbContext
             : base(options)
         {
         }
-    public DbSet<Song> Songs { get; set; }
-    public DbSet<Artist> Artists { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<SongModel> Songs { get; set; }
+    public DbSet<ArtistModel> Artists { get; set; }
+    public DbSet<CategoryModel> Categories { get; set; }
 
 }

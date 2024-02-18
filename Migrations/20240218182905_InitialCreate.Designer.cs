@@ -11,7 +11,7 @@ using programmeringmed.Net4.Data;
 namespace programmeringmed.Net4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240216195642_InitialCreate")]
+    [Migration("20240218182905_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

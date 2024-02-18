@@ -23,14 +23,14 @@ namespace programmeringmed.Net4.Controllers
 
         // GET: api/Category
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<CategoryModel>>> GetCategories()
         {
             return await _context.Categories.ToListAsync();
         }
 
         // GET: api/Category/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(int id)
+        public async Task<ActionResult<CategoryModel>> GetCategory(int id)
         {
             var category = await _context.Categories.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace programmeringmed.Net4.Controllers
         // PUT: api/Category/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, Category category)
+        public async Task<IActionResult> PutCategory(int id, CategoryModel category)
         {
             if (id != category.Id)
             {
@@ -76,7 +76,7 @@ namespace programmeringmed.Net4.Controllers
         // POST: api/Category
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<CategoryModel>> PostCategory(CategoryModel category)
         {
             _context.Categories.Add(category);
             await _context.SaveChangesAsync();
@@ -97,7 +97,7 @@ namespace programmeringmed.Net4.Controllers
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new { message = "Kategorin har tagits bort." });
         }
 
         private bool CategoryExists(int id)

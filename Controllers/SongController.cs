@@ -23,7 +23,7 @@ namespace programmeringmed.Net4.Controllers
 
         // GET: api/Song
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Song>>> GetSongs()
+        public async Task<ActionResult<IEnumerable<SongModel>>> GetSongs()
         {
             return await _context.Songs.ToListAsync();
             
@@ -31,7 +31,7 @@ namespace programmeringmed.Net4.Controllers
 
         // GET: api/Song/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Song>> GetSong(int id)
+        public async Task<ActionResult<SongModel>> GetSong(int id)
         {
             var song = await _context.Songs.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace programmeringmed.Net4.Controllers
         // PUT: api/Song/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSong(int id, Song song)
+        public async Task<IActionResult> PutSong(int id, SongModel song)
         {
             if (id != song.Id)
             {
@@ -77,7 +77,7 @@ namespace programmeringmed.Net4.Controllers
         // POST: api/Song
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Song>> PostSong(Song song)
+        public async Task<ActionResult<SongModel>> PostSong(SongModel song)
         {
             _context.Songs.Add(song);
             await _context.SaveChangesAsync();
@@ -98,7 +98,7 @@ namespace programmeringmed.Net4.Controllers
             _context.Songs.Remove(song);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new { message = "Låten har tagits bort." });
         }
 
         private bool SongExists(int id)

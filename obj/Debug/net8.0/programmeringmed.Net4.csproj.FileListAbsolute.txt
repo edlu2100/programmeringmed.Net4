@@ -276,3 +276,4 @@
 /Users/edwin/Desktop/Edwin/Universitetet/Kurser/Webbutveckling med .Net/programmeringmed.Net4/obj/Debug/net8.0/programmeringmed.Net4.genruntimeconfig.cache
 /Users/edwin/Desktop/Edwin/Universitetet/Kurser/Webbutveckling med .Net/programmeringmed.Net4/obj/Debug/net8.0/ref/programmeringmed.Net4.dll
 /Users/edwin/Desktop/Edwin/Universitetet/Kurser/Webbutveckling med .Net/programmeringmed.Net4/bin/Debug/net8.0/appsettings.json
+/Users/edwin/Desktop/Edwin/Universitetet/Kurser/Webbutveckling med .Net/programmeringmed.Net4/obj/Debug/net8.0/programmeringmed.Net4.sourcelink.json

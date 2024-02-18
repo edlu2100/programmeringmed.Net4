@@ -1,9 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace programmeringmed.Net4.Models;
 
-public class Song
+public class SongModel
 {
     public int Id { get; set; }
     [Required(ErrorMessage = "Låttitel är obligatorisk.")]
@@ -11,16 +10,13 @@ public class Song
 
     [Required(ErrorMessage = "ArtistId är obligatorisk.")]
     public int? ArtistId { get; set; }
+    public ArtistModel? Artist { get; set; }
 
     [Required(ErrorMessage = "CategoryId är obligatorisk.")]
     public int? CategoryId { get; set; }
+    public CategoryModel? Category { get; set; }
 
     [Required(ErrorMessage = "Längd är obligatorisk.")]
     public int? Length { get; set; }
 
-    [ForeignKey("ArtistId")]
-    public Artist? Artist { get; set; }
-
-    [ForeignKey("CategoryId")]
-    public Category? Category { get; set; }
 }
