@@ -30,29 +30,29 @@ namespace programmeringmed.Net4.Controllers
 
         // GET: api/Category/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<CategoryModel>> GetCategory(int id)
+        public async Task<ActionResult<CategoryModel>> GetCategoryModel(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
+            var categoryModel = await _context.Categories.FindAsync(id);
 
-            if (category == null)
+            if (categoryModel == null)
             {
                 return NotFound();
             }
 
-            return category;
+            return categoryModel;
         }
 
         // PUT: api/Category/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(int id, CategoryModel category)
+        public async Task<IActionResult> PutCategoryModel(int id, CategoryModel categoryModel)
         {
-            if (id != category.Id)
+            if (id != categoryModel.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(categoryModel).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace programmeringmed.Net4.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoryExists(id))
+                if (!CategoryModelExists(id))
                 {
                     return NotFound();
                 }
@@ -76,31 +76,31 @@ namespace programmeringmed.Net4.Controllers
         // POST: api/Category
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<CategoryModel>> PostCategory(CategoryModel category)
+        public async Task<ActionResult<CategoryModel>> PostCategoryModel(CategoryModel categoryModel)
         {
-            _context.Categories.Add(category);
+            _context.Categories.Add(categoryModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return CreatedAtAction("GetCategoryModel", new { id = categoryModel.Id }, categoryModel);
         }
 
         // DELETE: api/Category/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id)
+        public async Task<IActionResult> DeleteCategoryModel(int id)
         {
-            var category = await _context.Categories.FindAsync(id);
-            if (category == null)
+            var categoryModel = await _context.Categories.FindAsync(id);
+            if (categoryModel == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(category);
+            _context.Categories.Remove(categoryModel);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Kategorin har tagits bort." });
+            return NoContent();
         }
 
-        private bool CategoryExists(int id)
+        private bool CategoryModelExists(int id)
         {
             return _context.Categories.Any(e => e.Id == id);
         }

@@ -17,7 +17,7 @@ namespace programmeringmed.Net4.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.2");
 
-            modelBuilder.Entity("programmeringmed.Net4.Models.Artist", b =>
+            modelBuilder.Entity("programmeringmed.Net4.Models.ArtistModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,7 +32,7 @@ namespace programmeringmed.Net4.Migrations
                     b.ToTable("Artists");
                 });
 
-            modelBuilder.Entity("programmeringmed.Net4.Models.Category", b =>
+            modelBuilder.Entity("programmeringmed.Net4.Models.CategoryModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +47,7 @@ namespace programmeringmed.Net4.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("programmeringmed.Net4.Models.Song", b =>
+            modelBuilder.Entity("programmeringmed.Net4.Models.SongModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,40 +71,7 @@ namespace programmeringmed.Net4.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArtistId");
-
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Songs");
-                });
-
-            modelBuilder.Entity("programmeringmed.Net4.Models.Song", b =>
-                {
-                    b.HasOne("programmeringmed.Net4.Models.Artist", "Artist")
-                        .WithMany("Songs")
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("programmeringmed.Net4.Models.Category", "Category")
-                        .WithMany("Songs")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Artist");
-
-                    b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("programmeringmed.Net4.Models.Artist", b =>
-                {
-                    b.Navigation("Songs");
-                });
-
-            modelBuilder.Entity("programmeringmed.Net4.Models.Category", b =>
-                {
-                    b.Navigation("Songs");
                 });
 #pragma warning restore 612, 618
         }

@@ -50,42 +50,20 @@ namespace programmeringmed.Net4.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Songs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Songs_Artists_ArtistId",
-                        column: x => x.ArtistId,
-                        principalTable: "Artists",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Songs_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Songs_ArtistId",
-                table: "Songs",
-                column: "ArtistId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Songs_CategoryId",
-                table: "Songs",
-                column: "CategoryId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Songs");
-
-            migrationBuilder.DropTable(
                 name: "Artists");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Songs");
         }
     }
 }

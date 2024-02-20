@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace programmeringmed.Net4.Models;
 
@@ -10,11 +11,13 @@ public class SongModel
 
     [Required(ErrorMessage = "ArtistId är obligatorisk.")]
     public int? ArtistId { get; set; }
-    public ArtistModel? Artist { get; set; }
+    [NotMapped]
+    public ArtistModel? Artists { get; set; }
 
     [Required(ErrorMessage = "CategoryId är obligatorisk.")]
     public int? CategoryId { get; set; }
-    public CategoryModel? Category { get; set; }
+    [NotMapped]
+    public CategoryModel? Categories { get; set; }
 
     [Required(ErrorMessage = "Längd är obligatorisk.")]
     public int? Length { get; set; }

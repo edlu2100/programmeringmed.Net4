@@ -30,29 +30,29 @@ namespace programmeringmed.Net4.Controllers
 
         // GET: api/Artist/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ArtistModel>> GetArtist(int id)
+        public async Task<ActionResult<ArtistModel>> GetArtistModel(int id)
         {
-            var artist = await _context.Artists.FindAsync(id);
+            var artistModel = await _context.Artists.FindAsync(id);
 
-            if (artist == null)
+            if (artistModel == null)
             {
                 return NotFound();
             }
 
-            return artist;
+            return artistModel;
         }
 
         // PUT: api/Artist/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutArtist(int id, ArtistModel artist)
+        public async Task<IActionResult> PutArtistModel(int id, ArtistModel artistModel)
         {
-            if (id != artist.Id)
+            if (id != artistModel.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(artist).State = EntityState.Modified;
+            _context.Entry(artistModel).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace programmeringmed.Net4.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ArtistExists(id))
+                if (!ArtistModelExists(id))
                 {
                     return NotFound();
                 }
@@ -76,31 +76,31 @@ namespace programmeringmed.Net4.Controllers
         // POST: api/Artist
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ArtistModel>> PostArtist(ArtistModel artist)
+        public async Task<ActionResult<ArtistModel>> PostArtistModel(ArtistModel artistModel)
         {
-            _context.Artists.Add(artist);
+            _context.Artists.Add(artistModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetArtist", new { id = artist.Id }, artist);
+            return CreatedAtAction("GetArtistModel", new { id = artistModel.Id }, artistModel);
         }
 
         // DELETE: api/Artist/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteArtist(int id)
+        public async Task<IActionResult> DeleteArtistModel(int id)
         {
-            var artist = await _context.Artists.FindAsync(id);
-            if (artist == null)
+            var artistModel = await _context.Artists.FindAsync(id);
+            if (artistModel == null)
             {
                 return NotFound();
             }
 
-            _context.Artists.Remove(artist);
+            _context.Artists.Remove(artistModel);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Artisten har tagits bort." });
+            return NoContent();
         }
 
-        private bool ArtistExists(int id)
+        private bool ArtistModelExists(int id)
         {
             return _context.Artists.Any(e => e.Id == id);
         }

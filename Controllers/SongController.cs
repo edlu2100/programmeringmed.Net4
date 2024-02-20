@@ -26,34 +26,33 @@ namespace programmeringmed.Net4.Controllers
         public async Task<ActionResult<IEnumerable<SongModel>>> GetSongs()
         {
             return await _context.Songs.ToListAsync();
-            
         }
 
         // GET: api/Song/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SongModel>> GetSong(int id)
+        public async Task<ActionResult<SongModel>> GetSongModel(int id)
         {
-            var song = await _context.Songs.FindAsync(id);
+            var songModel = await _context.Songs.FindAsync(id);
 
-            if (song == null)
+            if (songModel == null)
             {
                 return NotFound();
             }
 
-            return song;
+            return songModel;
         }
 
         // PUT: api/Song/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutSong(int id, SongModel song)
+        public async Task<IActionResult> PutSongModel(int id, SongModel songModel)
         {
-            if (id != song.Id)
+            if (id != songModel.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(song).State = EntityState.Modified;
+            _context.Entry(songModel).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +60,7 @@ namespace programmeringmed.Net4.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SongExists(id))
+                if (!SongModelExists(id))
                 {
                     return NotFound();
                 }
@@ -77,31 +76,31 @@ namespace programmeringmed.Net4.Controllers
         // POST: api/Song
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<SongModel>> PostSong(SongModel song)
+        public async Task<ActionResult<SongModel>> PostSongModel(SongModel songModel)
         {
-            _context.Songs.Add(song);
+            _context.Songs.Add(songModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSong", new { id = song.Id }, song);
+            return CreatedAtAction("GetSongModel", new { id = songModel.Id }, songModel);
         }
 
         // DELETE: api/Song/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSong(int id)
+        public async Task<IActionResult> DeleteSongModel(int id)
         {
-            var song = await _context.Songs.FindAsync(id);
-            if (song == null)
+            var songModel = await _context.Songs.FindAsync(id);
+            if (songModel == null)
             {
                 return NotFound();
             }
 
-            _context.Songs.Remove(song);
+            _context.Songs.Remove(songModel);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Låten har tagits bort." });
+            return NoContent();
         }
 
-        private bool SongExists(int id)
+        private bool SongModelExists(int id)
         {
             return _context.Songs.Any(e => e.Id == id);
         }
